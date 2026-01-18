@@ -37,7 +37,7 @@ fun PantallaGaleria(navController: NavController){
             Card(modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .clickable { })
+                .clickable { navController.navigate("detalle/${casa.id}") })
             {
                 Row(modifier = Modifier.padding(8.dp)){
 
