@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 @Composable
-fun PantallaInicio(navController: NavController){
+fun PantallaInfo(navController: NavController){
 
     Column(
         modifier = Modifier
@@ -25,10 +25,17 @@ fun PantallaInicio(navController: NavController){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Text("Bienvenido a la galeria de casas", style= MaterialTheme.typography.headlineSmall)
-        Spacer(modifier = Modifier.height(24.dp))
-        Button(onClick = { }){Text("Ver Galeria")}
+        Button(
+            onClick = {navController.popBackStack()},
+            modifier = Modifier.align(Alignment.Start)
+        ){Text("Volver")}
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Text("Desarrollado por Pildoras Informaticas", style=MaterialTheme.typography.titleLarge)
+
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { navController.navigate("info") }){Text("Sobre la App")}
+
+        Text("App de ejemplo creada para ensenar Navegacion con JetPack Compose")
     }
 }
