@@ -4,19 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.proyectocasas.ui.pantallas.PantallaGaleria
 import com.example.proyectocasas.ui.pantallas.PantallaInfo
 import com.example.proyectocasas.ui.pantallas.PantallaInicio
-import com.example.proyectocasas.ui.theme.ProyectoCasasTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +22,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable()
+@Composable
 fun CasasApp(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "inicio"){
         composable("inicio") { PantallaInicio(navController) }
         composable("info") { PantallaInfo(navController) }
+        composable("galeria") { PantallaGaleria(navController) }
     }
 }
