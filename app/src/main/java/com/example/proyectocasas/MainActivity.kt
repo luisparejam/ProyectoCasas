@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.proyectocasas.ui.pantallas.PantallaDetalleCasa
+import com.example.proyectocasas.ui.pantallas.PantallaFormulario
 import com.example.proyectocasas.ui.pantallas.PantallaGaleria
 import com.example.proyectocasas.ui.pantallas.PantallaInfo
 import com.example.proyectocasas.ui.pantallas.PantallaInicio
@@ -32,6 +33,7 @@ fun CasasApp(){
         composable("inicio") { PantallaInicio(navController) }
         composable("info") { PantallaInfo(navController) }
         composable("galeria") { PantallaGaleria(navController) }
+        composable("formulario") { PantallaFormulario(navController) }
         composable("detalle/{id}", arguments = listOf(navArgument("id"){
             type= NavType.IntType
         }))

@@ -28,7 +28,11 @@ fun PantallaInicio(navController: NavController){
         Text("Bienvenido a la galeria de casas", style= MaterialTheme.typography.headlineSmall)
         Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = { navController.navigate("galeria") }){Text("Ver Galeria")}
+
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = { navController.navigate("info") }){Text("Sobre la App")}
+
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(onClick = { navController.navigate("formulario") }){Text("Registrar nueva casa")}
     }
 }
