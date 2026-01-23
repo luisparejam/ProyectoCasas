@@ -17,6 +17,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
+import com.example.proyectocasas.R
 import com.example.proyectocasas.data.RepositorioCasas
 import kotlin.random.Random
 
@@ -45,11 +47,20 @@ fun PantallaDetalleCasa(navController: NavController, id:Int){
         Box(modifier = Modifier.fillMaxWidth().height(300.dp).pointerInput(Unit){
             detectTransformGestures { _, pan, zoom, rotationDelta -> offset+=pan }
         }, contentAlignment = Alignment.Center){
-            Image(
-                painter = painterResource(id=casa.imagenId),
-                contentDescription = casa.nombre,
-                modifier = Modifier.graphicsLayer(translationX = offset.x, translationY = offset.y)
-            )
+
+            if(casa.imagenUri!=null){
+                Image(
+                    painter = rememberAsyncImagePainter(casa.imagenUri),
+                    contentDescription = casa.nombre,
+                    modifier = Modifier.graphicsLayer(translationX = offset.x, translationY = offset.y)
+                )
+            } else{
+                Image(
+                    painter = painterResource(id=casa.imagenId?: R.drawable.casa1),
+                    contentDescription = casa.nombre,
+                    modifier = Modifier.graphicsLayer(translationX = offset.x, translationY = offset.y)
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(16.dp))

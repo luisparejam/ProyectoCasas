@@ -22,6 +22,8 @@ import androidx.navigation.NavController
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import coil.compose.rememberAsyncImagePainter
+import com.example.proyectocasas.data.Casa
+import com.example.proyectocasas.data.RepositorioCasas
 
 @Composable
 fun PantallaFormulario(navController : NavController){
@@ -70,8 +72,20 @@ fun PantallaFormulario(navController : NavController){
         Spacer(Modifier.height(16.dp))
 
         Button(onClick={
-            if (nombre.isNotBlank() && descripcion.length>=10){
-                navController.popBackStack()
+            if (nombre.isNotBlank() && descripcion.length>=10 && imagenUri!=null){
+                val nuevaCasa = Casa(
+                    id = RepositorioCasas.listaCasas.size+1,
+                    nombre = nombre,
+                    imagenId = null,
+                    imagenUri = imagenUri,
+                    descripcion = descripcion
+                )
+
+                RepositorioCasas.agregarCasa(nuevaCasa)
+
+                navController.navigate("galeria")
+
+                // navController.popBackStack()
             }
         }){Text("Guardar")}
     }

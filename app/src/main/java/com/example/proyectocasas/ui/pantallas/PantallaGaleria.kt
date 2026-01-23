@@ -20,6 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
+import com.example.proyectocasas.R
 import com.example.proyectocasas.data.RepositorioCasas
 
 @Composable
@@ -41,10 +43,17 @@ fun PantallaGaleria(navController: NavController){
             {
                 Row(modifier = Modifier.padding(8.dp)){
 
-                    Image(painter = painterResource(id=casa.imagenId),
-                        contentDescription = casa.nombre,
-                        modifier = Modifier.size(80.dp)
-                    )
+                    if(casa.imagenUri!=null){
+                        Image(painter = rememberAsyncImagePainter(casa.imagenUri),
+                            contentDescription = casa.nombre,
+                            modifier = Modifier.size(80.dp)
+                        )
+                    } else{
+                        Image(painter = painterResource(id=casa.imagenId?: R.drawable.casa1),
+                            contentDescription = casa.nombre,
+                            modifier = Modifier.size(80.dp)
+                        )
+                    }
 
                     Spacer(modifier = Modifier.padding(16.dp))
 
